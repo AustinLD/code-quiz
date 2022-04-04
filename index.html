@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./assets/css/reset.css">
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <title>Quiz</title>
-</head>
-<body>
-
-<div class = "container"> <!-- container for all divs inside the body -->
-  <span class="time">75</span>  <!-- timer should go in top right of card -->
-  <div id="question-container" class="hide"> <!-- container for questions -->
-  <div id="question"></div>
-  <div id="answers"></div>
-  </div>
-  <div id="answer-btns" class="button-grid"> <!--Divs for answer buttons -->
-    <button class="btn hide">Answer 1</button>
-    <button class="btn hide">Answer 2</button>
-    <button class="btn hide">Answer 3</button>
-    <button class="btn hide">Answer 4</button>
-  </div>
-  <div class="start"> <!-- Start button -->
-    <button id="start-button">Start</button>
-  </div>
-</div>
-
-
-<script src="./assets/js/script.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./assets/css/reset.css" />
+		<link rel="stylesheet" href="./assets/css/style.css" />
+		<title>Quiz</title>
+	</head>
+	<body>
+		<div class="container">
+			<!-- container for all divs inside the body -->
+			<span class="time">75</span>
+			<!-- timer should go in top right of card -->
+			<div id="question-container" class="hide">
+				<!-- container for questions -->
+				<div id="question"></div>
+				<!-- <div class="btn" id="answers"></div> hopefully appending answers here? -->
+			</div>
+			<div id="answer-btns" class="button-grid">
+					<button class="btn btn1 hide">Answer 1</button>
+					<button class="btn btn2 hide">Answer 2</button>
+					<button class="btn btn3 hide">Answer 3</button>
+					<button class="btn btn4 hide">Answer 4</button>
+			</div>
+			<div class="start">
+				<!-- Start button -->
+				<button id="start-button">Start</button>
+			</div>
+		</div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script src="./assets/js/script.js"></script>
+	</body>
 </html>

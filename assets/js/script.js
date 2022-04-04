@@ -3,13 +3,17 @@ const startButton = document.querySelector("#start-button"); // targets start bu
 
 const questionContainerElement = document.getElementById("question-container"); // targets question container
 
-var answerElementButtons = document.querySelector("#answer-btns") // targets answer buttons in html
+ var answerElementButtons = document.querySelector("#answer-btns") // targets answer buttons container in html
 
 var timer = document.querySelector(".time") // targets class of time in the html
 
 var currentQuestionIndex = 0 // sets question index to 0
 
 
+const answerButtons = document.querySelector(".btn") // targets answers buttons
+
+
+answerButtons.addEventListener("click", );
 startButton.addEventListener("click", startGame); // event listener for start game button
 
 
@@ -18,23 +22,50 @@ function startGame() { //starts game
   startTimer()
   console.log("Game has started");
   startButton.classList.add("hide"); // adds the "hide" class to the "start-btn" ID to hide the element
-  questionContainerElement.removeAttribute("class"); // removes the "hide" class to the "question-continer" ID to show the element // logs that the game has started in the console
+  questionContainerElement.removeAttribute("class");
+  $("#answer-btns").children().removeClass("hide");
   setNextQuestion()
 }
 
+
+
+
 function setNextQuestion() {
   showQuestion()
+  showAnswer()
+
 }
+
+
+
+
 
 function showQuestion() {
   var currentQuestion = questions[currentQuestionIndex]
   var questionTitle = document.getElementById("question")
-  questionTitle.textContent = currentQuestion.question1
+  questionTitle.textContent = currentQuestion.prompt
   // loop over question choices
   // hide old question choices
-  // append buttons for each answer
   // add event listener click for choice
-  // display selected choice on page
+
+
+}
+
+
+
+
+
+
+function showAnswer() {
+var currentQuestion = questions[currentQuestionIndex]
+var availableAnswer1 = document.querySelector(".btn1")
+var availableAnswer2 = document.querySelector(".btn2")
+var availableAnswer3 = document.querySelector(".btn3")
+var availableAnswer4 = document.querySelector(".btn4")
+availableAnswer1.textContent = currentQuestion.answers[0].text1
+availableAnswer2.textContent = currentQuestion.answers[1].text2
+availableAnswer3.textContent = currentQuestion.answers[2].text3
+availableAnswer4.textContent = currentQuestion.answers[3].text4
 
 
 }
@@ -53,7 +84,10 @@ function startTimer() {
 }
 
 
+function endQuiz() {
 
+
+}
 
 
 
@@ -63,21 +97,21 @@ function startTimer() {
 // array of questions and answers
 const questions = [
   {
-    question1: "Do you like Dogs?",
+    prompt: "Do you like Dogs?",
     answers: [
-      {text: "A", correct: true},
-      {text: "B", correct: false},
-      {text: "C", correct: false},
-      {text: "D", correct: false},
+      {text1: "A", correct: true},
+      {text2: "B", correct: false},
+      {text3: "C", correct: false},
+      {text4: "D", correct: false},
     ]
   },
   {
-    question1: "Do you like Dogs?",
+    prompt: "Do you like Dogs?",
     answers: [
-      {text: "A", correct: true},
-      {text: "B", correct: false},
-      {text: "C", correct: false},
-      {text: "D", correct: false},
+      {text1: "A", correct: true},
+      {text2: "B", correct: false},
+      {text3: "C", correct: false},
+      {text4: "D", correct: false},
     ]
   },
 ]

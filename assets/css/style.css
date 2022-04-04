@@ -20,7 +20,12 @@ body {
   box-shadow: 0 0 10px 2px;
 }
 
-.btn {
+.li {
+  list-style-type: none;
+
+}
+
+.btn1, .btn2, .btn3, .btn4 {
   display: flex;
   background-color: blueviolet;
   color: white;
