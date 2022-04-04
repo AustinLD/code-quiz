@@ -9,7 +9,7 @@ var answerElementButtons = document.querySelector("#answer-btns")
 
 var timer = document.querySelector(".time")
 
-var startTime = 75
+var startTime = 3
 
 
 startButton.addEventListener("click", startGame); // event listener for start game button
@@ -35,8 +35,11 @@ function showQuestion() {
 function startTimer() {
   setInterval(function() {
   startTime--;
-  if (startTime < 75) {
+  if (startTime < 3) {
     timer.textContent = startTime;
+  } if (startTime === 0) {
+    timer.textContent = "Game Over";
+    clearInterval(startTimer);
   }
   }, 1000);
 }
