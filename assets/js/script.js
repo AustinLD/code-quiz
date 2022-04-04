@@ -3,9 +3,13 @@ const startButton = document.querySelector("#start-button"); // targets start bu
 
 const questionContainerElement = document.querySelector("#question-container"); // targets question container
 
-const questionElement = document.querySelector("#question")
+var questionElement = document.querySelector("#question")
 
-const answerElementButtons = document.querySelector("answer-btns")
+var answerElementButtons = document.querySelector("#answer-btns")
+
+var timer = document.querySelector(".time")
+
+var startTime = 75
 
 
 startButton.addEventListener("click", startGame); // event listener for start game button
@@ -13,6 +17,7 @@ startButton.addEventListener("click", startGame); // event listener for start ga
 
 
 function startGame() { //starts game
+  startTimer()
   console.log("Game has started");
   startButton.classList.add("hide"); // adds the "hide" class to the "start-btn" ID to hide the element
   questionContainerElement.classList.remove("hide"); // removes the "hide" class to the "question-continer" ID to show the element // logs that the game has started in the console
@@ -20,9 +25,21 @@ function startGame() { //starts game
 };
 
 function setNextQuestion() {
-
+  showQuestion()
 }
 
+function showQuestion() {
+  questionElement.textContent = questions.question1
+}
+
+function startTimer() {
+  setInterval(function() {
+  startTime--;
+  if (startTime < 75) {
+    timer.textContent = startTime;
+  }
+  }, 1000);
+}
 
 
 
@@ -35,9 +52,9 @@ function setNextQuestion() {
 // array of questions and answers
 const questions = [
   {
-    question: "Question 1",
+    question1: "Do you like Dogs?",
     answers: [
-      {text: "A", correct: true },
+      {text: "A", correct: true},
       {text: "B", correct: false},
       {text: "C", correct: false},
       {text: "D", correct: false},
