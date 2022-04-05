@@ -11,7 +11,7 @@
 	<body>
 		<div class="container">
 			<!-- container for all divs inside the body -->
-			<span class="time">75</span>
+			<div class="time">60</div>
 			<!-- timer should go in top right of card -->
 			<div id="question-container" class="hide">
 				<!-- container for questions -->
@@ -19,17 +19,26 @@
 				<!-- <div class="btn" id="answers"></div> hopefully appending answers here? -->
 			</div>
 			<div id="answer-btns" class="button-grid">
-					<button class="btn btn1 hide">Answer 1</button>
-					<button class="btn btn2 hide">Answer 2</button>
-					<button class="btn btn3 hide">Answer 3</button>
-					<button class="btn btn4 hide">Answer 4</button>
+					<button id="btn1" class="btn hide">Answer 1</button>
+					<button id="btn2" class="btn hide">Answer 2</button>
+					<button id="btn3" class="btn hide">Answer 3</button>
+					<button id="btn4"class="btn hide">Answer 4</button>
 			</div>
 			<div class="start">
 				<!-- Start button -->
 				<button id="start-button">Start</button>
 			</div>
+      <div class="correct-container">
+      <div class="correct hide">Correct</div>
+      <div class="incorrect hide">Incorrect</div>
+      </div class=correct-container>
 		</div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<script src="./assets/js/script.js"></script>
 	</body>
 </html>
+
+
+
+
+

@@ -3,27 +3,34 @@ const startButton = document.querySelector("#start-button"); // targets start bu
 
 const questionContainerElement = document.getElementById("question-container"); // targets question container
 
- var answerElementButtons = document.querySelector("#answer-btns") // targets answer buttons container in html
+var answerElementButtons = document.querySelector("#answer-btns") // targets answer buttons container in html
 
 var timer = document.querySelector(".time") // targets class of time in the html
 
 var currentQuestionIndex = 0 // sets question index to 0
 
+var score = timer // sets score equal to timer
 
-const answerButtons = document.querySelector(".btn") // targets answers buttons
 
 
-answerButtons.addEventListener("click", );
+// const answerButtons = document.querySelector(".btn")// targets answers buttons
+document.querySelector("#btn1").addEventListener("click", setNextQuestion)
+document.querySelector("#btn2").addEventListener("click", setNextQuestion)
+document.querySelector("#btn3").addEventListener("click", setNextQuestion)
+document.querySelector("#btn4").addEventListener("click", setNextQuestion)
+
+
+
+// answerButtons.addEventListener("click", setNextQuestion);
+ // event listener for answer buttons
 startButton.addEventListener("click", startGame); // event listener for start game button
-
-
 
 function startGame() { //starts game
   startTimer()
   console.log("Game has started");
   startButton.classList.add("hide"); // adds the "hide" class to the "start-btn" ID to hide the element
   questionContainerElement.removeAttribute("class");
-  $("#answer-btns").children().removeClass("hide");
+  $("#answer-btns").children().removeClass("hide"); 
   setNextQuestion()
 }
 
@@ -31,9 +38,18 @@ function startGame() { //starts game
 
 
 function setNextQuestion() {
+  console.log(this.value)
+  if(this.value !== questions[currentQuestionIndex].answers[0].text1) {
+    console.log("incorrect")
+  } else {
+    console.log("correct")
+  }
   showQuestion()
   showAnswer()
-
+  // if(answerButtons) {
+  //   currentQuestionIndex++;
+  //   console.log(answerButtons)
+  // }
 }
 
 
@@ -44,11 +60,6 @@ function showQuestion() {
   var currentQuestion = questions[currentQuestionIndex]
   var questionTitle = document.getElementById("question")
   questionTitle.textContent = currentQuestion.prompt
-  // loop over question choices
-  // hide old question choices
-  // add event listener click for choice
-
-
 }
 
 
@@ -58,20 +69,38 @@ function showQuestion() {
 
 function showAnswer() {
 var currentQuestion = questions[currentQuestionIndex]
-var availableAnswer1 = document.querySelector(".btn1")
-var availableAnswer2 = document.querySelector(".btn2")
-var availableAnswer3 = document.querySelector(".btn3")
-var availableAnswer4 = document.querySelector(".btn4")
+var availableAnswer1 = document.querySelector("#btn1")
+var availableAnswer2 = document.querySelector("#btn2")
+var availableAnswer3 = document.querySelector("#btn3")
+var availableAnswer4 = document.querySelector("#btn4")
 availableAnswer1.textContent = currentQuestion.answers[0].text1
+availableAnswer1.value = currentQuestion.answers[0].correct
 availableAnswer2.textContent = currentQuestion.answers[1].text2
+availableAnswer1.value = currentQuestion.answers[1].correct
 availableAnswer3.textContent = currentQuestion.answers[2].text3
+availableAnswer1.value = currentQuestion.answers[2].correct
 availableAnswer4.textContent = currentQuestion.answers[3].text4
-
-
+availableAnswer1.value = currentQuestion.answers[3].correct
+console.log(currentQuestion.answers)
 }
 
+
+
+// function score() {
+// if(selectedAnswer = false) {
+//   timer - 10;
+//   console.log(selectedAnswer)
+// }
+// }
+
+
+
+
+
+
+
 function startTimer() {
-  var startTime = 3
+  var startTime = 60
   setInterval(function() {
   startTime--;
   if (startTime >= 0) {
@@ -84,34 +113,56 @@ function startTimer() {
 }
 
 
-function endQuiz() {
-
-
-}
-
 
 
 
 
 
 // array of questions and answers
-const questions = [
+var questions = [
   {
-    prompt: "Do you like Dogs?",
+    prompt: "In 1768, Captain James Cook set out to explore which ocean?",
     answers: [
-      {text1: "A", correct: true},
-      {text2: "B", correct: false},
-      {text3: "C", correct: false},
-      {text4: "D", correct: false},
+      {text1: "Pacific Ocean", correct: true},
+      {text2: "Atlantic Ocean", correct: false},
+      {text3: "Indian Ocean", correct: false},
+      {text4: "Arctic Ocean", correct: false},
     ]
   },
   {
-    prompt: "Do you like Dogs?",
+    prompt: "Which of the following is not an international organisation?",
     answers: [
-      {text1: "A", correct: true},
-      {text2: "B", correct: false},
-      {text3: "C", correct: false},
-      {text4: "D", correct: false},
+      {text1: "FIFA", correct: false},
+      {text2: "NATO", correct: false},
+      {text3: "ASEAN", correct: false},
+      {text4: "FBI", correct: true},
+    ]
+  },
+  {
+    prompt: "What is the speed of sound?",
+    answers: [
+      {text1: "120 km/h", correct: false},
+      {text2: "1,200 km/h", correct: true},
+      {text3: "400 km/h", correct: false},
+      {text4: "700 km/h", correct: false},
+    ]
+  },
+  {
+    prompt: "What is the main component of the sun?",
+    answers: [
+      {text1: "Liquid lava", correct: false},
+      {text2: "Gas", correct: true},
+      {text3: "Molten iron", correct: false},
+      {text4: "Rock", correct: false},
+    ]
+  },
+  {
+    prompt: "How many time zones are there in total in the world?",
+    answers: [
+      {text1: "8", correct: false},
+      {text2: "16", correct: false},
+      {text3: "24", correct: true},
+      {text4: "32", correct: false},
     ]
   },
 ]
