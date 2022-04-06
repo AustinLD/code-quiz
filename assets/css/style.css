@@ -85,3 +85,18 @@ body {
   color: darkred;
   font-size: 25px;
 }
+
+
+#scoreCard {
+  position: absolute;
+  z-index: 1;
+  width: 50%;
+  height: 50%;
+  background-color: black;
+  margin: 0 auto;
+  color: white;
+  background-color: grey;
+  border: 1px solid black;
+
+
+}

@@ -11,6 +11,9 @@ var currentQuestionIndex = 0 // sets question index to 0
 
 var score = timer // sets score equal to timer
 
+var startTime = 60
+
+var scoreCard = document.querySelector("#scoreCard")
 
 
 // const answerButtons = document.querySelector(".btn")// targets answers buttons
@@ -31,7 +34,12 @@ function startGame() { //starts game
   startButton.classList.add("hide"); // adds the "hide" class to the "start-btn" ID to hide the element
   questionContainerElement.removeAttribute("class");
   $("#answer-btns").children().removeClass("hide"); 
-  setNextQuestion()
+  showQuestion()
+  showAnswer()
+  setNextQuestion() 
+    if(currentQuestionIndex == "5" || startTime === 0) {
+    EndGame()
+  }
 }
 
 
@@ -39,17 +47,20 @@ function startGame() { //starts game
 
 function setNextQuestion() {
   console.log(this.value)
-  if(this.value !== questions[currentQuestionIndex].answers[0].text1) {
-    console.log("incorrect")
+  if(this.value == "true") {
+    currentQuestionIndex++;
+    console.log(currentQuestionIndex)
+    showQuestion()
+    showAnswer()
   } else {
-    console.log("correct")
+    startTime -= 5
   }
-  showQuestion()
-  showAnswer()
-  // if(answerButtons) {
-  //   currentQuestionIndex++;
-  //   console.log(answerButtons)
-  // }
+  
+}
+
+function EndGame() {
+clearTimeout(startTime)
+scoreCard.removeAttribute("class");
 }
 
 
@@ -76,23 +87,13 @@ var availableAnswer4 = document.querySelector("#btn4")
 availableAnswer1.textContent = currentQuestion.answers[0].text1
 availableAnswer1.value = currentQuestion.answers[0].correct
 availableAnswer2.textContent = currentQuestion.answers[1].text2
-availableAnswer1.value = currentQuestion.answers[1].correct
+availableAnswer2.value = currentQuestion.answers[1].correct
 availableAnswer3.textContent = currentQuestion.answers[2].text3
-availableAnswer1.value = currentQuestion.answers[2].correct
+availableAnswer3.value = currentQuestion.answers[2].correct
 availableAnswer4.textContent = currentQuestion.answers[3].text4
-availableAnswer1.value = currentQuestion.answers[3].correct
+availableAnswer4.value = currentQuestion.answers[3].correct
 console.log(currentQuestion.answers)
 }
-
-
-
-// function score() {
-// if(selectedAnswer = false) {
-//   timer - 10;
-//   console.log(selectedAnswer)
-// }
-// }
-
 
 
 
@@ -100,7 +101,6 @@ console.log(currentQuestion.answers)
 
 
 function startTimer() {
-  var startTime = 60
   setInterval(function() {
   startTime--;
   if (startTime >= 0) {
@@ -126,7 +126,7 @@ var questions = [
       {text1: "Pacific Ocean", correct: true},
       {text2: "Atlantic Ocean", correct: false},
       {text3: "Indian Ocean", correct: false},
-      {text4: "Arctic Ocean", correct: false},
+      {text4: "Arctic Ocean", correct: false}
     ]
   },
   {
