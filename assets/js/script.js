@@ -8,12 +8,14 @@ var answerElementButtons = document.querySelector("#answer-btns") // targets ans
 var timer = document.querySelector(".time") // targets class of time in the html
 
 var currentQuestionIndex = 0 // sets question index to 0
-
-var score = timer // sets score equal to timer
+ // sets score equal to timer
 
 var startTime = 60
 
 var scoreCard = document.querySelector("#scoreCard")
+
+
+var finalScore = document.getElementById("final-score")
 
 
 // const answerButtons = document.querySelector(".btn")// targets answers buttons
@@ -37,9 +39,6 @@ function startGame() { //starts game
   showQuestion()
   showAnswer()
   setNextQuestion() 
-    if(currentQuestionIndex == "5" || startTime === 0) {
-    EndGame()
-  }
 }
 
 
@@ -53,14 +52,16 @@ function setNextQuestion() {
     showQuestion()
     showAnswer()
   } else {
-    startTime -= 5
+    startTime -= 5 
   }
-  
 }
 
 function EndGame() {
-clearTimeout(startTime)
+localStorage.setItem("final time", JSON.stringify(startTime));
+var score = JSON.parse(localStorage.getItem("final time"));
 scoreCard.removeAttribute("class");
+finalScore.innerHTML = score;
+clearInterval(startTimer);
 }
 
 
@@ -68,9 +69,13 @@ scoreCard.removeAttribute("class");
 
 
 function showQuestion() {
+  if(currentQuestionIndex == 5 || startTime === 0) {
+    EndGame()
+  } else {
   var currentQuestion = questions[currentQuestionIndex]
   var questionTitle = document.getElementById("question")
   questionTitle.textContent = currentQuestion.prompt
+  }
 }
 
 
@@ -111,6 +116,9 @@ function startTimer() {
   }
   }, 1000);
 }
+
+
+
 
 
 
