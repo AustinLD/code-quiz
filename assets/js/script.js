@@ -69,7 +69,7 @@ clearInterval(startTimer);
 
 
 function showQuestion() {
-  if(currentQuestionIndex == 5 || startTime === 0) {
+  if(currentQuestionIndex == 5) {
     EndGame()
   } else {
   var currentQuestion = questions[currentQuestionIndex]
@@ -77,7 +77,6 @@ function showQuestion() {
   questionTitle.textContent = currentQuestion.prompt
   }
 }
-
 
 
 
@@ -111,7 +110,8 @@ function startTimer() {
   if (startTime >= 0) {
     timer.textContent = startTime;
   } if (startTime === 0) {
-    timer.textContent = "Game Over";
+    timer.textContent = "Game Over"
+    EndGame();
     clearInterval(startTime);
   }
   }, 1000);
